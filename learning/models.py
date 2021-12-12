@@ -25,32 +25,32 @@ class Module(models.Model):
         return f"Module ID: {self.id} & Name: {self.name}"
 
 
-class Admin(AbstractUser):
-    id = models.BigAutoField(primary_key=True)
-    username = models.CharField(max_length=20)
-    password = models.CharField(max_length=20)
+class User(AbstractUser):
+    is_admin = models.BooleanField(default=False)
+    is_professor = models.BooleanField(default=False)
+    is_student = models.BooleanField(default=False)
+
+
+class Admin(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
 
     def __str__(self):
-        return f"Admin ID: {self.id} & Name: {self.username}"
+        return f"Admin ID: {self.user.id} & Name: {self.user.username}"
 
 
-class Professor(AbstractUser):
-    id = models.BigAutoField(primary_key=True)
-    username = models.CharField(max_length=20)
-    password = models.CharField(max_length=20)
+class Professor(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
 
     def __str__(self):
         return f"Professor ID: {self.id} & Name: {self.username}"
 
 
-class Student(AbstractUser):
-    id = models.BigAutoField(primary_key=True)
-    username = models.CharField(max_length=20)
-    password = models.CharField(max_length=20)
+class Student(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     course = models.ForeignKey(Course)
 
     def __str__(self):
-        return f"Student ID: {self.id} & Name: {self.username}"
+        return f"Student ID: {self.user.id} & Name: {self.user.username}"
 
 class Tutorial(models.Model):
     id = models.BigAutoField(primary_key=True)
