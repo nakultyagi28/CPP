@@ -1,4 +1,5 @@
 {% extends 'dashboard/dashboard_base.html' %}
+{% load crispy_forms_tags %}
 <!-- Sidebar -->
 {% block sidebar %}
 <nav class="nav flex-column">
@@ -19,7 +20,7 @@
 {% block mainbody %}
 <form method="post">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form|crispy }}
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 {% endblock %}
