@@ -1,6 +1,5 @@
 from django.contrib import auth
-from django.urls import resolve
-from django.urls.base import reverse
+from django.urls.base import reverse_lazy
 from django.views import View
 from django.contrib import messages
 from django.views.generic import ListView
@@ -75,45 +74,35 @@ class CreateProfessor(LoginRequiredMixin, CreateView):
     form_class = CreateProfessorForm
     model = User
     template_name = 'dashboard/admin/create-professor.html'
-
-    def get_absolute_url(self):
-        return reverse('create_professor')
+    success_url = reverse_lazy('create_professor')
 
 
 class CreateStudent(LoginRequiredMixin, CreateView):
     form_class = CreateStudentForm
     model = User
     template_name = 'dashboard/admin/create-student.html'
-
-    def get_absolute_url(self):
-        return reverse('create_student')
+    success_url = reverse_lazy('create_student')
 
 
 class CreateAdmin(LoginRequiredMixin, CreateView):
     form_class = CreateAdminForm
     model = User
     template_name = 'dashboard/admin/create-admin.html'
-
-    def get_absolute_url(self):
-        return reverse('create_admin')
+    success_url = reverse_lazy('create_admin')
 
 
 class CreateCourse(LoginRequiredMixin, CreateView):
     form_class = CreateCourseForm
     model = Course
     template_name = 'dashboard/admin/create-course.html'
-
-    def get_absolute_url(self):
-        return reverse('create_course')
+    success_url = reverse_lazy('create_course')
 
 
 class CreateModule(LoginRequiredMixin, CreateView):
     form_class = CreateModuleForm
     model = Module
     template_name = 'dashboard/admin/create-module.html'
-
-    def get_absolute_url(self):
-        return reverse('create_module')
+    success_url = reverse_lazy('create_module')
 
 
 
