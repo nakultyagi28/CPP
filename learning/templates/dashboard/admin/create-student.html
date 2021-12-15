@@ -1,0 +1,25 @@
+{% extends 'dashboard/dashboard_base.html' %}
+<!-- Sidebar -->
+{% block sidebar %}
+<nav class="nav flex-column">
+    <a class="nav-link" href="{% url 'dashboard' %}">Home</a>
+    <a class="nav-link" href="{% url 'create_professor' %}">Create Professor</a>
+    <a class="nav-link active" aria-current="page" href="{% url 'create_student' %}">Create Student</a>
+    <a class="nav-link" href="{% url 'create_admin' %}">Create Admin</a>
+    <a class="nav-link" href="{% url 'create_course' %}">Create Course</a>
+    <a class="nav-link" href="{% url 'create_module' %}">Create Module</a>
+    <a class="nav-link" href="{% url 'list_professors' %}">List Professors</a>
+    <a class="nav-link" href="{% url 'list_students' %}">List Students</a>
+    <a class="nav-link" href="{% url 'list_admins' %}">List Admins</a>
+    <a class="nav-link" href="{% url 'list_courses' %}">List Courses</a>
+    <a class="nav-link" href="{% url 'list_modules' %}">List Modules</a>
+</nav>
+{% endblock %}
+<!-- Main Body -->
+{% block mainbody %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
