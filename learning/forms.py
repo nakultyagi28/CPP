@@ -13,6 +13,12 @@ class UserForm(forms.ModelForm):
 
 # Admin Dashboard Forms
 class CreateProfessorForm(UserCreationForm):
+    modules = forms.ModelMultipleChoiceField(
+        queryset=Module.objects.all(),
+        widget=forms.CheckboxSelectMultiple,
+        required=True
+    )
+
     class Meta(UserCreationForm.Meta):
         model = User
 
