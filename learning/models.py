@@ -8,7 +8,7 @@ def tutorial_video_directory_path(instance, filename):
 
 
 class Course(models.Model):
-    id = models.CharField(primary_key=True)
+    id = models.CharField(primary_key=True, max_length=50)
     name = models.CharField(max_length=50)
     description = models.TextField(max_length=500)
 
@@ -47,7 +47,7 @@ class Professor(models.Model):
 
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    course = models.ForeignKey(Course)
+    course = models.ForeignKey(Course, on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return f"Student ID: {self.user.id} & Name: {self.user.username}"
@@ -56,7 +56,7 @@ class Tutorial(models.Model):
     id = models.BigAutoField(primary_key=True)
     title = models.CharField(max_length=20)
     description = models.TextField(max_length=500)
-    module = models.ForeignKey(Module)
+    module = models.ForeignKey(Module, on_delete=models.DO_NOTHING)
     professors = models.ManyToManyField(Professor)
     created_at = models.DateTimeField(auto_now_add=True)
     thumbnail = models.ImageField(upload_to='images', null=True, blank=True)
@@ -73,7 +73,7 @@ class TutorialVideo(models.Model):
     id = models.BigAutoField(primary_key=True)
     title = models.CharField(max_length=20)
     description = models.TextField(max_length=500)
-    tutorial = models.ForeignKey(Tutorial)
+    tutorial = models.ForeignKey(Tutorial, on_delete=models.DO_NOTHING)
     video = models.FileField(upload_to=tutorial_video_directory_path,blank=True,null=True)
 
     def __str__(self):
