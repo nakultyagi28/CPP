@@ -49,6 +49,7 @@ class Professor(models.Model):
 class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
     course = models.ForeignKey(Course, on_delete=models.DO_NOTHING)
+    email = models.EmailField()
 
     def __str__(self):
         return f"Student ID: {self.user.id} & Name: {self.user.username}"
