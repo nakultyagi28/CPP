@@ -40,6 +40,7 @@ class Admin(models.Model):
 
 class Professor(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
+    modules = models.ManyToManyField(Module)
 
     def __str__(self):
         return f"Professor ID: {self.id} & Name: {self.username}"
@@ -82,4 +83,3 @@ class TutorialVideo(models.Model):
     def delete(self, *args, **kwargs):
         self.video.delete()
         super().delete(*args, **kwargs) 
-
