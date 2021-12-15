@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'learning',
+    'crispy_forms',
     # 'storages'
 ]
 
@@ -131,6 +132,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 MEDIA_ROOT = 'media/'
 AUTH_USER_MODEL = 'learning.User'
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
