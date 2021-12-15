@@ -12,7 +12,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 
 from learning.constants import INSTITUTE_NAME
-from learning.models import Professor, User, Course, Module
+from learning.models import Admin, Professor, Student, User, Course, Module
 from learning.forms import CreateProfessorForm, CreateStudentForm, CreateAdminForm, CreateCourseForm, CreateModuleForm
 
 
@@ -107,30 +107,35 @@ class CreateModule(LoginRequiredMixin, CreateView):
 
 
 class ListProfessors(LoginRequiredMixin, ListView):
-    model = User
+    model = Professor
+    paginate_by = 10
     template_name = 'dashboard/admin/list-professors.html'
-    queryset = User.objects.filter(is_professor=True)
+    queryset = Professor.objects.all()
 
 
 class ListStudents(LoginRequiredMixin, ListView):
-    model = User
+    model = Student
+    paginate_by = 10
     template_name = 'dashboard/admin/list-students.html'
-    queryset = User.objects.filter(is_student=True)
+    queryset = Student.objects.all()
 
 
 class ListAdmins(LoginRequiredMixin, ListView):
-    model = User
+    model = Admin
+    paginate_by = 10
     template_name = 'dashboard/admin/list-admins.html'
-    queryset = User.objects.filter(is_admin=True)
+    queryset = Admin.objects.all()
 
 
-class ListCourses(ListView):
+class ListCourses(LoginRequiredMixin, ListView):
     model = Course
+    paginate_by = 10
     template_name = 'dashboard/admin/list-courses.html'
     queryset = Course.objects.all()
 
 
-class ListModules(ListView):
+class ListModules(LoginRequiredMixin, ListView):
     model = Module
+    paginate_by = 10
     template_name = 'dashboard/admin/list-modules.html'
     queryset = Module.objects.all()

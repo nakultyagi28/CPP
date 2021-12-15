@@ -20,6 +20,17 @@ urlpatterns = [
     path('list/admins/', views.ListAdmins.as_view(), name='list_admins'),
     path('list/courses/', views.ListCourses.as_view(), name='list_courses'),
     path('list/modules/', views.ListModules.as_view(), name='list_modules'),
+    path('edit/professor/', views.ListProfessors.as_view(), name='edit_professor'),
+    path('edit/student/', views.ListStudents.as_view(), name='edit_student'),
+    path('edit/admin/', views.ListAdmins.as_view(), name='edit_admin'),
+    path('edit/course/', views.ListCourses.as_view(), name='edit_course'),
+    path('edit/module/', views.ListModules.as_view(), name='edit_module'),
+    path('delete/professor/', views.ListProfessors.as_view(), name='delete_professor'),
+    path('delete/student/', views.ListStudents.as_view(), name='delete_student'),
+    path('delete/admin/', views.ListAdmins.as_view(), name='delete_admin'),
+    path('delete/course/', views.ListCourses.as_view(), name='delete_course'),
+    path('delete/module/', views.ListModules.as_view(), name='delete_module'),
     # Student Paths
+    path('list/modules/', views.ListModules.as_view(), name='list_modules'),
     # Professor Paths
 ]
