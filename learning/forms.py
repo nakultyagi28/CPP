@@ -19,9 +19,6 @@ class CreateProfessorForm(UserCreationForm):
     def __init__(self, *args, **kwargs):
             super(CreateProfessorForm, self).__init__(*args, **kwargs)
 
-            # for fieldname in ['username', 'password1', 'password2', 'email']:
-                # self.fields[fieldname].help_text = None
-
     @transaction.atomic            
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -37,9 +34,6 @@ class CreateAdminForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
             super(CreateAdminForm, self).__init__(*args, **kwargs)
-
-            for fieldname in ['username', 'password', 'email']:
-                self.fields[fieldname].help_text = None
 
     @transaction.atomic            
     def save(self, commit=True):
@@ -59,12 +53,6 @@ class CreateStudentForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = User
-
-    def __init__(self, *args, **kwargs):
-            super(CreateStudentForm, self).__init__(*args, **kwargs)
-
-            for fieldname in ['username', 'password', 'email']:
-                self.fields[fieldname].help_text = None
 
     @transaction.atomic
     def save(self):
