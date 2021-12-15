@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'CPP.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv('DB_ENGINE',''),
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('DB_NAME',''),
         'USER': os.getenv('DB_USER',''),
         'PASSWORD': os.getenv('DB_PASSWORD',''),
@@ -134,3 +134,8 @@ AUTH_USER_MODEL = 'learning.User'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 # DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# AWS_ACCESS_KEY_ID = 'ASIA4WX7MSDD5ZTAJZJN'
+# AWS_SECRET_ACCESS_KEY = 'XF9UwMKBwMJOzzZZkkUDfaNdmby1b61yUTUQInZc'
+# AWS_STORAGE_BUCKET_NAME = 'cpppythonbucket'
