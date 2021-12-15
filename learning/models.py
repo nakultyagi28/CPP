@@ -18,7 +18,7 @@ class Course(models.Model):
 
 class Module(models.Model):
     id = models.BigAutoField(primary_key=True)
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=50)
     courses = models.ManyToManyField(Course)
 
     def __str__(self):
