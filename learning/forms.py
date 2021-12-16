@@ -51,7 +51,6 @@ class CreateAdminForm(UserCreationForm):
 
 
 class CreateStudentForm(UserCreationForm):
-    email = forms.EmailField()
     course = forms.ModelChoiceField(
         queryset=Course.objects.all(),
         widget=forms.Select,
@@ -66,11 +65,7 @@ class CreateStudentForm(UserCreationForm):
         user = super().save(commit=False)
         user.is_student = True
         user.save()
-        student = Student.objects.create(
-            user=user,
-            course=self.cleaned_data['course'],
-            email=self.cleaned_data['email'],
-        )
+        student = Student.objects.create(user=user, course=self.cleaned_data['course'])
         return student
 
 
